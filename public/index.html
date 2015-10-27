@@ -14,9 +14,14 @@
     html {
         height:100%;
         font-family: verdana, sans-serif;
-        font-size: 10px;
+        font-size:9px;
         background:#fff;
         text-align:center;
+    }
+
+    select {
+        padding:.38em .62em;
+        background:#fff;
     }
 
     .background {
@@ -34,6 +39,18 @@
     </style>
     </head>
     <body>
+        <br>
+        <select id="rkey">
+            <option value="vendor">Vendor</option>
+            <option value="account">Account</option>
+            <option value="type">Expenditure type</option>
+        </select>
+        <select id="ckey">
+            <option value="vendor">Vendor</option>
+            <option value="account" selected="selected">Account</option>
+            <option value="type">Expenditure type</option>
+        </select>
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
         <script src="main.js"></script>
     </body>

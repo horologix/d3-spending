@@ -20,7 +20,18 @@ d3.json("data.json", function(data) {
         .attr("width", width)
         .attr("height", height);
 
+    var first = "vendor";
+    var second = "account";
     render("vendor", "account");
+
+    d3.select("#rkey").on("change", function() {
+        first = this.value;
+        render(first, second);
+    });
+    d3.select("#ckey").on("change", function() {
+        second = this.value;
+        render(first, second);
+    });
 
     function render(kr, kc) {
         var rr = count(kr);
@@ -32,6 +43,7 @@ d3.json("data.json", function(data) {
         x.domain(d3.range(LIM));
         z.domain([0, Math.ceil(max)]);
         
+        svg.selectAll(".row").remove();
         var row = svg.selectAll(".row")
             .data(matrix)
         .enter().append("g")
@@ -51,6 +63,7 @@ d3.json("data.json", function(data) {
                 .style("fill", function() {return "#23aaf3";});
         }
         
+        svg.selectAll(".rr").remove();
         var rtext = svg.selectAll(".rr")
             .data(rr)
         .enter().append("g")
@@ -67,6 +80,7 @@ d3.json("data.json", function(data) {
             .attr("text-anchor", "end")
             .text(function(d, i) { return d.key; });
 
+        svg.selectAll(".column").remove();
         var ctext = svg.selectAll(".column")
             .data(cc)
         .enter().append("g")
